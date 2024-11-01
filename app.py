@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file, render_template, url_for
+from flask import Flask, request, render_template, url_for
 import qrcode
 import os
 
@@ -24,10 +24,6 @@ def index():
         filename = 'qrcode.png'
         generate_qr_code(data, filename)
     return render_template('index.html', filename=filename)
-
-@app.route('/download/<filename>')
-def download_file(filename):
-    return send_file(os.path.join('static', filename), as_attachment=True)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
