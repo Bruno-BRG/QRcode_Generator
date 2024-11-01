@@ -25,12 +25,29 @@ def index():
         return send_file(filename, as_attachment=True)
     return render_template_string('''
         <!doctype html>
-        <title>QR Code Generator</title>
-        <h1>Generate QR Code</h1>
-        <form method=post enctype=multipart/form-data>
-          <input type=text name=data placeholder="Enter link or text">
-          <input type=submit value=Generate>
-        </form>
+        <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <title>QR Code Generator</title>
+        </head>
+        <body>
+            <div class="container">
+                <h1 class="mt-5">Generate QR Code</h1>
+                <form method="post" enctype="multipart/form-data" class="mt-3">
+                    <div class="form-group">
+                        <label for="data">Enter link or text</label>
+                        <input type="text" class="form-control" id="data" name="data" placeholder="Enter link or text" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generate</button>
+                </form>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        </body>
+        </html>
     ''')
 
 if __name__ == "__main__":
